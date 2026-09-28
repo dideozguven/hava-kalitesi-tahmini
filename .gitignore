@@ -221,3 +221,8 @@ __marimo__/
 data/raw/*
 !data/raw/.gitkeep
 .venv/
+models/
+data/processed/
+*.pkl
+*.joblib
+kaggle.json
