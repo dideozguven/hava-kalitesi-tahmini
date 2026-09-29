@@ -226,3 +226,4 @@ data/processed/
 *.pkl
 *.joblib
 kaggle.json
+reports/figures/
