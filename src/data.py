@@ -18,7 +18,9 @@ def load_city_day() -> pd.DataFrame:
     path = RAW_DIR / "city_day.csv"
     if not path.exists():
         raise FileNotFoundError(
-            f"{path} bulunamadı. Önce 'python scripts/download_data.py' çalıştırın."
+            f"{path} bulunamadı. Veri setini Kaggle'dan "
+            "(Air Quality Data in India 2015-2020) indirip "
+            "CSV dosyalarını data/raw/ klasörüne koyun."
         )
     df = pd.read_csv(path, parse_dates=["Date"])
     df["AQI_Bucket"] = pd.Categorical(df["AQI_Bucket"], categories=AQI_ORDER, ordered=True)
