@@ -18,7 +18,7 @@ PROCESSED_DIR = ROOT / "data" / "processed"
 DROP_COLUMNS = ["City", "AQI", "AQI_Bucket"]  # Şehir tekleşince gereksiz; AQI sızıntı yaratır
 MIN_DOLULUK = 0.5  # Bu oranın altında dolu olan kirleticiler çıkarılır
 MAX_GAP = 2        # Bu kadar güne kadar süren boşluklar doldurulur
-
+MAX_DEGER = 1000   # µg/m³ üzeri değerler sensör hatası sayılır
 
 def filter_city(df: pd.DataFrame, city: str = CITY) -> pd.DataFrame:
     """Sadece verilen şehrin satırlarını alır.
@@ -50,10 +50,11 @@ def select_columns(df: pd.DataFrame, min_doluluk: float = MIN_DOLULUK) -> pd.Dat
     raise NotImplementedError
 
 
-def clean_invalid(df: pd.DataFrame) -> pd.DataFrame:
+def clean_invalid(df: pd.DataFrame, max_deger: float = MAX_DEGER) -> pd.DataFrame:
     """Fiziksel olarak mümkün olmayan değerleri NaN yapar.
 
     - Negatif konsantrasyonlar NaN olur.
+    - max_deger'in üzerindeki değerler sensör hatası sayılıp NaN olur.
     - Kaç değerin temizlendiğini sütun bazında yazdırır.
     - Değerleri silmez veya doldurmaz; sadece işaretler.
     """
