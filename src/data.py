@@ -2,6 +2,7 @@ from pathlib import Path
 
 import pandas as pd
 
+
 ROOT = Path(__file__).resolve().parents[1]
 RAW_DIR = ROOT / "data" / "raw"
 
@@ -11,6 +12,8 @@ POLLUTANTS = [
 ]
 
 AQI_ORDER = ["Good", "Satisfactory", "Moderate", "Poor", "Very Poor", "Severe"]
+CITY = "Delhi"
+TARGET = "PM2.5"
 
 
 def load_city_day() -> pd.DataFrame:

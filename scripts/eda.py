@@ -26,13 +26,12 @@ import seaborn as sns
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.append(str(ROOT))
-from src.data import AQI_ORDER, POLLUTANTS, load_city_day  # noqa: E402
+from src.data import AQI_ORDER, CITY, POLLUTANTS, TARGET, load_city_day  # noqa: E402
 
 FIG_DIR = ROOT / "reports" / "figures"
 GENEL_DIR = FIG_DIR / "genel"
 
-VARSAYILAN_SEHIR = "Delhi"
-TARGET = "PM2.5"
+
 KAPANMA_BASLANGIC = pd.Timestamp("2020-03-25")
 HINDISTAN_GUNLUK_SINIR = 60  # µg/m³, PM2.5 için 24 saatlik ulusal sınır
 DIWALI = pd.to_datetime(
@@ -398,7 +397,7 @@ def sehir_eda(df: pd.DataFrame, sehir: str) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Hava kalitesi EDA")
     parser.add_argument("--bolum", choices=["genel", "sehir", "hepsi"], default="hepsi")
-    parser.add_argument("--sehir", default=VARSAYILAN_SEHIR)
+    parser.add_argument("--sehir", default=CITY)
     args = parser.parse_args()
 
     df = load_city_day()
