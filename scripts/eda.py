@@ -5,9 +5,9 @@
   - Şehir: seçilen tek şehir (modellemeye yön verecek desenler)
 
 Kullanım (proje kök klasöründen):
-    python scripts/eda.py                          # iki bölüm, varsayılan şehir
-    python scripts/eda.py --bolum genel            # sadece tüm şehirler
-    python scripts/eda.py --bolum sehir --sehir Mumbai
+    python src/eda.py                          # iki bölüm, varsayılan şehir
+    python src/eda.py --bolum genel            # sadece tüm şehirler
+    python src/eda.py --bolum sehir --sehir Mumbai
 
 Tablolar terminale yazdırılır, grafikler reports/figures/ altına kaydedilir:
     reports/figures/genel/     tüm şehir analizleri
